@@ -1,125 +1,1204 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parroquia Católica San Francisco de Asís - Shushufindi</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parroquia Católica San Francisco de Asís - Shushufindi</title>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@400;600&display=swap');
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        body { font-family: 'Open Sans', sans-serif; }
-        h1, h2, h3, h4 { font-family: 'Lora', serif; }
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
 
-        .bg-franciscan { background-color: #5D4037; }
-        .text-franciscan { color: #5D4037; }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
 
-        /* HERO CON FOTO LOCAL */
-        .hero-pattern {
-            background-image: linear-gradient(
-                rgba(0,0,0,0.5), rgba(0,0,0,0.5)
-            ),
-            url('./foto1.jpg'); /* <-- FOTO LOCAL DEL HERO */
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+    h1, h2, h3, h4, h5 {
+      font-family: 'Lora', serif;
+    }
+
+    .bg-franciscan {
+      background-color: #5D4037;
+    }
+    .text-franciscan {
+      color: #5D4037;
+    }
+
+    .hero-pattern {
+      background-image:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
+        url('https://images.unsplash.com/photo-1509099863731-ef4bff19e808?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-in {
+      animation: fadeInUp 1s ease-out both;
+    }
+  </style>
 </head>
 
 <body class="bg-stone-50 text-stone-800 flex flex-col min-h-screen">
 
-    <!-- NAV -->
-    <nav class="bg-white shadow-md fixed w-full z-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between h-20">
+  <!-- NAVBAR -->
+  <nav class="bg-white shadow-md fixed w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <!-- LOGO Y NOMBRE -->
+        <a href="#inicio" class="flex items-center space-x-3">
+          <!-- Logo local (reemplazar ./logo.png por tu archivo) -->
+          <img
+            src="./logo.png"
+            alt="Logo Parroquia San Francisco de Asís"
+            class="h-14 w-auto object-contain"
+          />
+          <div class="leading-tight">
+            <p class="font-bold text-lg text-gray-900">
+              Parroquia San Francisco de Asís
+            </p>
+            <p class="text-xs uppercase tracking-widest text-gray-500">
+              Shushufindi - Sucumbíos
+            </p>
+          </div>
+        </a>
 
-                <!-- LOGO LOCAL -->
-                <a href="#inicio" class="flex items-center space-x-3">
-                    <img src="./logo.png" alt="Logo Parroquia" class="h-14 w-auto object-contain">
-                    <div class="flex flex-col">
-                        <span class="font-bold text-xl text-gray-800 leading-tight">San Francisco de Asís</span>
-                        <span class="text-xs text-gray-500 uppercase tracking-wider">Shushufindi</span>
-                    </div>
-                </a>
+        <!-- MENÚ ESCRITORIO -->
+        <div class="hidden lg:flex items-center space-x-6 text-sm font-medium">
+          <a href="#inicio" class="text-gray-700 hover:text-franciscan transition">Inicio</a>
 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#inicio" class="hover:text-franciscan">Inicio</a>
-                    <a href="#este-mes" class="hover:text-franciscan">Este mes</a>
-                    <a href="#horarios" class="hover:text-franciscan">Horarios</a>
-                    <a href="#galeria" class="hover:text-franciscan">Galería</a>
-                    <a href="#contacto" class="bg-franciscan text-white px-5 py-2 rounded-full hover:bg-stone-700">Contáctanos</a>
-                </div>
-
-                <button id="mobile-menu-btn" class="md:hidden text-3xl text-franciscan">
-                    <i class="fas fa-bars"></i>
-                </button>
+          <!-- Parroquia -->
+          <div class="relative group">
+            <button
+              class="inline-flex items-center gap-1 text-gray-700 hover:text-franciscan transition"
+              data-dropdown="parroquia-dropdown"
+            >
+              Parroquia
+              <i class="fa-solid fa-chevron-down text-[10px]"></i>
+            </button>
+            <div
+              id="parroquia-dropdown"
+              class="dropdown-menu hidden absolute right-0 mt-2 w-56 bg-white border border-stone-200 rounded-lg shadow-lg py-2 text-sm z-50"
+            >
+              <a href="#historia" class="block px-4 py-2 hover:bg-stone-100">Nuestra historia</a>
+              <a href="#equipo-pastoral" class="block px-4 py-2 hover:bg-stone-100">Párroco y equipo pastoral</a>
+              <a href="#carisma-franciscano" class="block px-4 py-2 hover:bg-stone-100">Carisma franciscano</a>
             </div>
+          </div>
+
+          <!-- Liturgia -->
+          <div class="relative group">
+            <button
+              class="inline-flex items-center gap-1 text-gray-700 hover:text-franciscan transition"
+              data-dropdown="liturgia-dropdown"
+            >
+              Liturgia
+              <i class="fa-solid fa-chevron-down text-[10px]"></i>
+            </button>
+            <div
+              id="liturgia-dropdown"
+              class="dropdown-menu hidden absolute right-0 mt-2 w-56 bg-white border border-stone-200 rounded-lg shadow-lg py-2 text-sm z-50"
+            >
+              <a href="#horarios" class="block px-4 py-2 hover:bg-stone-100">Horarios de misa</a>
+              <a href="#tiempos-liturgicos" class="block px-4 py-2 hover:bg-stone-100">Tiempos litúrgicos</a>
+              <a href="#adoracion" class="block px-4 py-2 hover:bg-stone-100">Adoración al Santísimo</a>
+              <a href="#sacramentos" class="block px-4 py-2 hover:bg-stone-100">Confesiones y sacramentos</a>
+            </div>
+          </div>
+
+          <!-- Sacramentos -->
+          <div class="relative group">
+            <button
+              class="inline-flex items-center gap-1 text-gray-700 hover:text-franciscan transition"
+              data-dropdown="sacramentos-dropdown"
+            >
+              Sacramentos
+              <i class="fa-solid fa-chevron-down text-[10px]"></i>
+            </button>
+            <div
+              id="sacramentos-dropdown"
+              class="dropdown-menu hidden absolute right-0 mt-2 w-56 bg-white border border-stone-200 rounded-lg shadow-lg py-2 text-sm z-50"
+            >
+              <a href="#bautismo" class="block px-4 py-2 hover:bg-stone-100">Bautismo</a>
+              <a href="#eucaristia" class="block px-4 py-2 hover:bg-stone-100">Eucaristía</a>
+              <a href="#confirmacion" class="block px-4 py-2 hover:bg-stone-100">Confirmación</a>
+              <a href="#matrimonio" class="block px-4 py-2 hover:bg-stone-100">Matrimonio</a>
+              <a href="#uncion" class="block px-4 py-2 hover:bg-stone-100">Unción de los enfermos</a>
+            </div>
+          </div>
+
+          <!-- Pastorales -->
+          <div class="relative group">
+            <button
+              class="inline-flex items-center gap-1 text-gray-700 hover:text-franciscan transition"
+              data-dropdown="pastorales-dropdown"
+            >
+              Pastorales
+              <i class="fa-solid fa-chevron-down text-[10px]"></i>
+            </button>
+            <div
+              id="pastorales-dropdown"
+              class="dropdown-menu hidden absolute right-0 mt-2 w-60 bg-white border border-stone-200 rounded-lg shadow-lg py-2 text-sm z-50"
+            >
+              <a href="#catequesis" class="block px-4 py-2 hover:bg-stone-100">Catequesis</a>
+              <a href="#pastoral-juvenil" class="block px-4 py-2 hover:bg-stone-100">Pastoral Juvenil</a>
+              <a href="#pastoral-familiar" class="block px-4 py-2 hover:bg-stone-100">Pastoral Familiar</a>
+              <a href="#caritas" class="block px-4 py-2 hover:bg-stone-100">Cáritas Parroquial</a>
+              <a href="#coro" class="block px-4 py-2 hover:bg-stone-100">Coro y liturgia</a>
+            </div>
+          </div>
+
+          <!-- Agenda -->
+          <div class="relative group">
+            <button
+              class="inline-flex items-center gap-1 text-gray-700 hover:text-franciscan transition"
+              data-dropdown="agenda-dropdown"
+            >
+              Agenda
+              <i class="fa-solid fa-chevron-down text-[10px]"></i>
+            </button>
+            <div
+              id="agenda-dropdown"
+              class="dropdown-menu hidden absolute right-0 mt-2 w-56 bg-white border border-stone-200 rounded-lg shadow-lg py-2 text-sm z-50"
+            >
+              <a href="#este-mes" class="block px-4 py-2 hover:bg-stone-100">Este mes</a>
+              <a href="#calendario" class="block px-4 py-2 hover:bg-stone-100">Calendario anual</a>
+            </div>
+          </div>
+
+          <a
+            href="#contacto"
+            class="ml-2 inline-flex items-center bg-franciscan text-white px-5 py-2 rounded-full hover:bg-stone-800 shadow transition"
+          >
+            Contáctanos
+          </a>
         </div>
 
-        <div id="mobile-menu" class="hidden bg-white border-t">
-            <a href="#inicio" class="block px-4 py-3">Inicio</a>
-            <a href="#este-mes" class="block px-4 py-3">Este mes</a>
-            <a href="#horarios" class="block px-4 py-3">Horarios</a>
-            <a href="#galeria" class="block px-4 py-3">Galería</a>
-            <a href="#contacto" class="block px-4 py-3">Contacto</a>
+        <!-- MENÚ MÓVIL -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden text-2xl text-gray-700 hover:text-franciscan focus:outline-none"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- CONTENIDO MENÚ MÓVIL -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-stone-200">
+      <a href="#inicio" class="block px-4 py-3 text-gray-700 hover:bg-stone-100">Inicio</a>
+
+      <!-- Parroquia -->
+      <details class="border-t border-stone-100">
+        <summary class="px-4 py-3 text-gray-700 hover:bg-stone-100 cursor-pointer">
+          Parroquia
+        </summary>
+        <div class="bg-stone-50">
+          <a href="#historia" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Nuestra historia</a>
+          <a href="#equipo-pastoral" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Párroco y equipo pastoral</a>
+          <a href="#carisma-franciscano" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Carisma franciscano</a>
         </div>
-    </nav>
+      </details>
 
-    <!-- HERO LOCAL -->
-    <header id="inicio" class="hero-pattern h-screen flex items-center justify-center text-center text-white px-4">
-        <div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Parroquia San Francisco de Asís</h1>
-            <p class="text-lg mb-6">"Señor, haz de mí un instrumento de tu paz"</p>
-            <a href="#horarios" class="bg-white text-franciscan px-6 py-3 rounded-full font-bold">Ver horarios</a>
+      <!-- Liturgia -->
+      <details class="border-t border-stone-100">
+        <summary class="px-4 py-3 text-gray-700 hover:bg-stone-100 cursor-pointer">
+          Liturgia
+        </summary>
+        <div class="bg-stone-50">
+          <a href="#horarios" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Horarios de misa</a>
+          <a href="#tiempos-liturgicos" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Tiempos litúrgicos</a>
+          <a href="#adoracion" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Adoración al Santísimo</a>
+          <a href="#sacramentos" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Confesiones y sacramentos</a>
         </div>
-    </header>
+      </details>
 
+      <!-- Sacramentos -->
+      <details class="border-t border-stone-100">
+        <summary class="px-4 py-3 text-gray-700 hover:bg-stone-100 cursor-pointer">
+          Sacramentos
+        </summary>
+        <div class="bg-stone-50">
+          <a href="#bautismo" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Bautismo</a>
+          <a href="#eucaristia" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Eucaristía</a>
+          <a href="#confirmacion" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Confirmación</a>
+          <a href="#matrimonio" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Matrimonio</a>
+          <a href="#uncion" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Unción de los enfermos</a>
+        </div>
+      </details>
 
-    <!-- GALERÍA LOCAL -->
-    <section id="galeria" class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-10">Galería Parroquial</h2>
+      <!-- Pastorales -->
+      <details class="border-t border-stone-100">
+        <summary class="px-4 py-3 text-gray-700 hover:bg-stone-100 cursor-pointer">
+          Pastorales
+        </summary>
+        <div class="bg-stone-50">
+          <a href="#catequesis" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Catequesis</a>
+          <a href="#pastoral-juvenil" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Pastoral Juvenil</a>
+          <a href="#pastoral-familiar" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Pastoral Familiar</a>
+          <a href="#caritas" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Cáritas Parroquial</a>
+          <a href="#coro" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Coro y liturgia</a>
+        </div>
+      </details>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- Agenda -->
+      <details class="border-t border-stone-100">
+        <summary class="px-4 py-3 text-gray-700 hover:bg-stone-100 cursor-pointer">
+          Agenda
+        </summary>
+        <div class="bg-stone-50">
+          <a href="#este-mes" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Este mes</a>
+          <a href="#calendario" class="block px-6 py-2 text-gray-700 hover:bg-stone-100 text-sm">Calendario anual</a>
+        </div>
+      </details>
 
-                <!-- FOTOS LOCALES -->
-                <img src="./foto1.jpg" class="w-full h-64 object-cover rounded-lg shadow">
-                <img src="./foto2.jpg" class="w-full h-64 object-cover rounded-lg shadow">
-                <img src="./foto3.jpg" class="w-full h-64 object-cover rounded-lg shadow">
+      <!-- Contacto -->
+      <a
+        href="#contacto"
+        class="block px-4 py-3 text-franciscan font-semibold hover:bg-stone-100 border-t border-stone-100"
+      >
+        Contáctanos
+      </a>
+    </div>
+  </nav>
 
-                <!-- Puedes agregar más -->
-                <img src="./foto4.jpg" class="w-full h-64 object-cover rounded-lg shadow">
-                <img src="./misa1.jpg" class="w-full h-64 object-cover rounded-lg shadow">
-                <img src="./misa2.jpg" class="w-full h-64 object-cover rounded-lg shadow">
+  <!-- HERO -->
+  <header
+    id="inicio"
+    class="hero-pattern h-screen flex items-center justify-center text-center text-white px-4 pt-24"
+  >
+    <div class="max-w-3xl mx-auto animate-fade-in">
+      <p class="text-sm uppercase tracking-[0.3em] mb-3 text-amber-200">
+        Paz y Bien
+      </p>
 
+      <span
+        id="badge-tiempo-liturgico"
+        class="inline-block bg-white/10 border border-white/30 rounded-full px-4 py-1 text-xs tracking-widest mb-4"
+      >
+        <!-- Se llena con JS -->
+      </span>
+
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+        Parroquia Católica San Francisco de Asís
+      </h1>
+      <p class="text-lg md:text-xl text-stone-200 mb-6">
+        "Señor, haz de mí un instrumento de tu paz"
+      </p>
+      <p class="text-sm md:text-base text-stone-100 mb-8">
+        Una comunidad de fe, esperanza y caridad al servicio del pueblo de Shushufindi.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="#horarios"
+          class="bg-white text-franciscan px-8 py-3 rounded-full font-bold shadow hover:bg-stone-100 transition"
+        >
+          Ver horarios de misa
+        </a>
+        <a
+          href="#contacto"
+          class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white/10 transition"
+        >
+          Ofrecer una intención
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ESTE MES EN LA PARROQUIA -->
+  <section id="este-mes" class="py-16 bg-[#FFFBF2]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <span class="text-franciscan font-bold tracking-widest uppercase text-sm">
+          Agenda pastoral
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2">
+          Este mes en la parroquia
+        </h2>
+        <p
+          id="mes-nombre"
+          class="mt-2 text-xs uppercase tracking-[0.3em] text-gray-500"
+        ></p>
+        <div class="w-24 h-1 bg-franciscan mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="relative border-t-4 border-b-4 border-franciscan/70 pt-8 pb-8 mt-6">
+        <!-- Esquinas tipo marco antiguo -->
+        <div class="absolute -top-4 left-6 w-8 h-8 border-l-4 border-t-4 border-franciscan/80 rounded-tl-3xl"></div>
+        <div class="absolute -top-4 right-6 w-8 h-8 border-r-4 border-t-4 border-franciscan/80 rounded-tr-3xl"></div>
+        <div class="absolute -bottom-4 left-6 w-8 h-8 border-l-4 border-b-4 border-franciscan/80 rounded-bl-3xl"></div>
+        <div class="absolute -bottom-4 right-6 w-8 h-8 border-r-4 border-b-4 border-franciscan/80 rounded-br-3xl"></div>
+
+        <div class="relative z-10">
+          <!-- Cita e intención -->
+          <div class="grid md:grid-cols-2 gap-8 mb-10">
+            <div class="bg-white rounded-2xl shadow-sm p-6 border border-stone-200">
+              <h3 class="text-lg font-bold mb-3 text-franciscan">
+                Cita bíblica del mes
+              </h3>
+              <p id="mes-cita" class="italic text-gray-700">
+                <!-- JS -->
+              </p>
+            </div>
+            <div class="bg-white rounded-2xl shadow-sm p-6 border border-stone-200">
+              <h3 class="text-lg font-bold mb-3 text-franciscan">
+                Intención pastoral del mes
+              </h3>
+              <p id="mes-intencion" class="text-gray-700">
+                <!-- JS -->
+              </p>
+            </div>
+          </div>
+
+          <!-- Actividades / Sacramentos / Avisos -->
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-2xl shadow-sm p-6 border border-stone-200">
+              <h3 class="text-base font-bold mb-4 flex items-center gap-2 text-franciscan">
+                <i class="fas fa-calendar-day"></i>
+                Actividades del mes
+              </h3>
+              <ul id="mes-actividades" class="space-y-3 text-sm text-gray-700">
+                <!-- JS -->
+              </ul>
             </div>
 
-            <p class="text-center text-sm text-gray-500 mt-6">Para agregar nuevas fotos, solo súbelas a la raíz y pon su nombre aquí.</p>
+            <div class="bg-white rounded-2xl shadow-sm p-6 border border-stone-200">
+              <h3 class="text-base font-bold mb-4 flex items-center gap-2 text-franciscan">
+                <i class="fas fa-droplet"></i>
+                Vida sacramental
+              </h3>
+              <ul id="mes-sacramentos" class="space-y-3 text-sm text-gray-700">
+                <!-- JS -->
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-sm p-6 border border-stone-200">
+              <h3 class="text-base font-bold mb-4 flex items-center gap-2 text-franciscan">
+                <i class="fas fa-bullhorn"></i>
+                Avisos importantes
+              </h3>
+              <ul id="mes-avisos" class="space-y-3 text-sm text-gray-700">
+                <!-- JS -->
+              </ul>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
 
+      <p class="mt-8 text-xs text-center text-gray-500">
+        <strong>Nota para el equipo parroquial:</strong> esta sección se actualiza cambiando
+        el objeto <code>parroquiaMes</code> al final del archivo (no es necesario modificar el diseño).
+      </p>
+    </div>
+  </section>
 
-    <!-- FOOTER – LOGO LOCAL -->
-    <footer class="bg-black text-white py-8 text-center">
-        <img src="./footer-logo.png" class="mx-auto h-20 mb-4 object-contain">
+  <!-- HORARIOS DE MISA -->
+  <section id="horarios" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="text-franciscan font-bold tracking-widest uppercase text-sm">
+          Eucaristía
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2">
+          Horarios de Misa
+        </h2>
+        <div class="w-24 h-1 bg-franciscan mx-auto mt-4 rounded-full"></div>
+      </div>
 
-        <p class="text-stone-300 text-sm">
-            &copy; 2025 Parroquia Católica San Francisco de Asís - Shushufindi, Sucumbíos.
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Lunes a Viernes -->
+        <div class="bg-stone-50 p-8 rounded-2xl shadow-sm border border-stone-100 hover:shadow-md transition text-center">
+          <div class="w-16 h-16 bg-franciscan/10 text-franciscan rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="far fa-calendar-alt text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Lunes a Viernes</h3>
+          <ul class="space-y-3 text-gray-600 text-sm">
+            <li><span class="font-semibold mr-1">18:30</span> Santo Rosario</li>
+            <li><span class="font-semibold mr-1">19:00</span> Santa Misa</li>
+          </ul>
+        </div>
+
+        <!-- Domingo -->
+        <div class="bg-franciscan text-white p-8 rounded-2xl shadow-lg transform md:-translate-y-4 text-center relative overflow-hidden">
+          <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-white/10 rounded-full"></div>
+          <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 relative z-10">
+            <i class="fas fa-church text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4 relative z-10">Domingo (Día del Señor)</h3>
+          <ul class="space-y-3 text-stone-100 text-sm relative z-10">
+            <li><span class="font-bold">07:00</span> - Misa matutina</li>
+            <li><span class="font-bold">09:00</span> - Misa de niños</li>
+            <li><span class="font-bold">11:00</span> - Misa mayor</li>
+            <li><span class="font-bold">19:00</span> - Misa vespertina</li>
+          </ul>
+        </div>
+
+        <!-- Sábados -->
+        <div class="bg-stone-50 p-8 rounded-2xl shadow-sm border border-stone-100 hover:shadow-md transition text-center">
+          <div class="w-16 h-16 bg-franciscan/10 text-franciscan rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="far fa-clock text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Sábados</h3>
+          <ul class="space-y-3 text-gray-600 text-sm">
+            <li><span class="font-semibold mr-1">19:00</span> Misa de vísperas</li>
+            <li class="text-xs italic mt-4 text-stone-500">
+              Confesiones disponibles 30 minutos antes de cada misa.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIEMPOS LITÚRGICOS -->
+  <section id="tiempos-liturgicos" class="py-16 bg-stone-100">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <span class="text-franciscan font-bold tracking-widest uppercase text-sm">
+          Año litúrgico
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2">
+          Tiempos litúrgicos de la Iglesia
+        </h2>
+        <div class="w-24 h-1 bg-franciscan mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6 text-sm">
+        <div class="bg-white rounded-xl shadow-sm p-5 border border-stone-200">
+          <h3 class="font-bold text-franciscan mb-2">Adviento</h3>
+          <p class="text-gray-700">
+            Tiempo de esperanza y preparación para la venida del Señor. Colores morado y rosado.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm p-5 border border-stone-200">
+          <h3 class="font-bold text-franciscan mb-2">Navidad</h3>
+          <p class="text-gray-700">
+            Celebramos el nacimiento de Jesús, Dios hecho hombre que viene a habitar entre nosotros.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm p-5 border border-stone-200">
+          <h3 class="font-bold text-franciscan mb-2">Cuaresma</h3>
+          <p class="text-gray-700">
+            Tiempo de conversión, oración, ayuno y caridad, camino hacia la Pascua.
+          </p>
+        </div>
+        <div class="bg-white rounded-xl shadow-sm p-5 border border-stone-200">
+          <h3 class="font-bold text-franciscan mb-2">Pascua</h3>
+          <p class="text-gray-700">
+            Cincuenta días para celebrar la Resurrección del Señor y la victoria de la vida.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-6 text-sm text-gray-700">
+        <p>
+          A lo largo del año, también vivimos el <strong>Tiempo Ordinario</strong>, en el que
+          meditamos la vida pública de Jesús y crecemos en la fe día a día.
         </p>
-    </footer>
+      </div>
+    </div>
+  </section>
 
+  <!-- SACRAMENTOS - RESUMEN -->
+  <section id="sacramentos" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <span class="text-franciscan font-bold tracking-widest uppercase text-sm">
+          Sacramentos
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2">
+          Vida sacramental en la parroquia
+        </h2>
+        <div class="w-24 h-1 bg-franciscan mx-auto mt-4 rounded-full"></div>
+      </div>
 
-    <!-- Script menú -->
-    <script>
-        const btn = document.getElementById("mobile-menu-btn");
-        const menu = document.getElementById("mobile-menu");
+      <div class="grid md:grid-cols-3 gap-8 text-sm">
+        <!-- Bautismo -->
+        <div id="bautismo" class="bg-stone-50 rounded-xl p-6 border border-stone-200">
+          <h3 class="font-bold text-lg text-franciscan mb-2">
+            <i class="fas fa-water mr-2"></i>Bautismo
+          </h3>
+          <p class="text-gray-700 mb-2">
+            Los bautismos comunitarios se celebran el primer domingo de cada mes.
+          </p>
+          <p class="text-gray-700">
+            Requisitos generales: charla pre–bautismal para padres y padrinos, partida de
+            nacimiento del niño o niña, y registro en secretaría parroquial con anticipación.
+          </p>
+        </div>
 
-        btn.addEventListener("click", () => {
-            menu.classList.toggle("hidden");
+        <!-- Eucaristía -->
+        <div id="eucaristia" class="bg-stone-50 rounded-xl p-6 border border-stone-200">
+          <h3 class="font-bold text-lg text-franciscan mb-2">
+            <i class="fas fa-bread-slice mr-2"></i>Eucaristía
+          </h3>
+          <p class="text-gray-700 mb-2">
+            La Santa Misa es el centro de la vida de la parroquia. Los horarios están
+            detallados en la sección de Eucaristía.
+          </p>
+          <p class="text-gray-700">
+            Para Primera Comunión, los niños participan en el proceso de catequesis según el
+            calendario parroquial.
+          </p>
+        </div>
+
+        <!-- Confirmación -->
+        <div id="confirmacion" class="bg-stone-50 rounded-xl p-6 border border-stone-200">
+          <h3 class="font-bold text-lg text-franciscan mb-2">
+            <i class="fas fa-dove mr-2"></i>Confirmación
+          </h3>
+          <p class="text-gray-700 mb-2">
+            Sacramento que fortalece la fe y el compromiso cristiano, especialmente en
+            adolescentes y jóvenes.
+          </p>
+          <p class="text-gray-700">
+            Los encuentros de catequesis de confirmación se realizan según la programación de
+            Pastoral Juvenil.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 mt-8 text-sm">
+        <!-- Matrimonio -->
+        <div id="matrimonio" class="bg-stone-50 rounded-xl p-6 border border-stone-200">
+          <h3 class="font-bold text-lg text-franciscan mb-2">
+            <i class="fas fa-ring mr-2"></i>Matrimonio
+          </h3>
+          <p class="text-gray-700 mb-2">
+            Para programar un matrimonio, se recomienda acercarse a la parroquia al menos
+            <strong>tres meses antes</strong> de la fecha deseada.
+          </p>
+          <p class="text-gray-700">
+            Se realiza entrevista con el párroco, curso prematrimonial y preparación de la
+            documentación requerida.
+          </p>
+        </div>
+
+        <!-- Unción de los enfermos -->
+        <div id="uncion" class="bg-stone-50 rounded-xl p-6 border border-stone-200">
+          <h3 class="font-bold text-lg text-franciscan mb-2">
+            <i class="fas fa-hand-holding-medical mr-2"></i>Unción de los enfermos
+          </h3>
+          <p class="text-gray-700 mb-2">
+            Sacramento de consuelo para quienes atraviesan enfermedad grave o edad avanzada.
+          </p>
+          <p class="text-gray-700">
+            Se puede solicitar en secretaría parroquial o directamente al párroco. En caso de
+            urgencia, comuníquese telefónicamente.
+          </p>
+        </div>
+      </div>
+
+      <!-- Adoración -->
+      <div id="adoracion" class="mt-10 text-sm bg-stone-100 rounded-xl p-6 border border-stone-200">
+        <h3 class="font-bold text-lg text-franciscan mb-2">
+          <i class="fas fa-sun mr-2"></i>Adoración al Santísimo
+        </h3>
+        <p class="text-gray-700">
+          La adoración eucarística es un espacio de silencio, escucha y encuentro personal
+          con Jesús Sacramentado. En nuestra parroquia, se realiza los
+          <strong>lunes a las 19h30</strong>, después de la Eucaristía.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDA PARROQUIAL / PASTORALES -->
+  <section id="pastorales" class="py-16 bg-[#FFFBF2]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <span class="text-franciscan font-bold tracking-widest uppercase text-sm">
+          Vida parroquial
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2">
+          Grupos y pastorales
+        </h2>
+        <div class="w-24 h-1 bg-franciscan mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-6 text-sm">
+        <!-- Catequesis -->
+        <div id="catequesis" class="bg-white rounded-xl p-6 border border-stone-200">
+          <div class="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center mb-3 text-franciscan">
+            <i class="fas fa-book-bible"></i>
+          </div>
+          <h3 class="font-bold text-franciscan mb-2">Catequesis</h3>
+          <p class="text-gray-700">
+            Preparación para los sacramentos de Bautismo, Primera Comunión y Confirmación,
+            según edades y etapas.
+          </p>
+        </div>
+
+        <!-- Pastoral Juvenil -->
+        <div id="pastoral-juvenil" class="bg-white rounded-xl p-6 border border-stone-200">
+          <div class="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center mb-3 text-franciscan">
+            <i class="fas fa-people-group"></i>
+          </div>
+          <h3 class="font-bold text-franciscan mb-2">Pastoral Juvenil</h3>
+          <p class="text-gray-700">
+            Espacios de encuentro, formación y misión para adolescentes y jóvenes, al estilo de
+            San Francisco.
+          </p>
+        </div>
+
+        <!-- Pastoral Familiar -->
+        <div id="pastoral-familiar" class="bg-white rounded-xl p-6 border border-stone-200">
+          <div class="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center mb-3 text-franciscan">
+            <i class="fas fa-house-chimney-user"></i>
+          </div>
+          <h3 class="font-bold text-franciscan mb-2">Pastoral Familiar</h3>
+          <p class="text-gray-700">
+            Acompañamiento a matrimonios y familias, encuentros de oración y formación en la fe.
+          </p>
+        </div>
+
+        <!-- Cáritas -->
+        <div id="caritas" class="bg-white rounded-xl p-6 border border-stone-200">
+          <div class="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center mb-3 text-franciscan">
+            <i class="fas fa-hands-holding-heart"></i>
+          </div>
+          <h3 class="font-bold text-franciscan mb-2">Cáritas Parroquial</h3>
+          <p class="text-gray-700">
+            Servicio de caridad para las personas y familias más necesitadas de la comunidad.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mt-6 text-sm">
+        <!-- Coro -->
+        <div id="coro" class="bg-white rounded-xl p-6 border border-stone-200">
+          <div class="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center mb-3 text-franciscan">
+            <i class="fas fa-music"></i>
+          </div>
+          <h3 class="font-bold text-franciscan mb-2">Coro y Liturgia</h3>
+          <p class="text-gray-700">
+            Animación musical de la Eucaristía y celebraciones especiales al servicio de la
+            comunidad.
+          </p>
+        </div>
+
+        <!-- Monaguillos -->
+        <div class="bg-white rounded-xl p-6 border border-stone-200">
+          <div class="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center mb-3 text-franciscan">
+            <i class="fas fa-child"></i>
+          </div>
+          <h3 class="font-bold text-franciscan mb-2">Monaguillos</h3>
+          <p class="text-gray-700">
+            Niños, niñas y jóvenes que sirven en el altar y se forman en el amor a la Eucaristía.
+          </p>
+        </div>
+
+        <!-- Otros servicios -->
+        <div class="bg-white rounded-xl p-6 border border-stone-200">
+          <div class="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center mb-3 text-franciscan">
+            <i class="fas fa-hands-praying"></i>
+          </div>
+          <h3 class="font-bold text-franciscan mb-2">Otros servicios</h3>
+          <p class="text-gray-700">
+            Lectores, ministros extraordinarios de la comunión, visitadores de enfermos y otros
+            servicios al Evangelio.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA CON FILOS ANTIGUOS -->
+  <section id="galeria" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <span class="text-franciscan font-bold tracking-widest uppercase text-sm">
+          Galería
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2">
+          Nuestra comunidad en imágenes
+        </h2>
+        <p class="mt-2 text-gray-500 text-sm max-w-2xl mx-auto">
+          Celebraciones, sacramentos y momentos de oración en la Parroquia San Francisco de Asís.
+        </p>
+        <div class="w-24 h-1 bg-franciscan mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <div class="relative border-t-4 border-b-4 border-franciscan/70 pt-6 pb-6 mt-6">
+        <!-- Esquinas tipo marco -->
+        <div class="absolute -top-4 left-6 w-8 h-8 border-l-4 border-t-4 border-franciscan/80 rounded-tl-3xl"></div>
+        <div class="absolute -top-4 right-6 w-8 h-8 border-r-4 border-t-4 border-franciscan/80 rounded-tr-3xl"></div>
+        <div class="absolute -bottom-4 left-6 w-8 h-8 border-l-4 border-b-4 border-franciscan/80 rounded-bl-3xl"></div>
+        <div class="absolute -bottom-4 right-6 w-8 h-8 border-r-4 border-b-4 border-franciscan/80 rounded-br-3xl"></div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 relative z-10">
+          <!-- 1 -->
+          <figure class="overflow-hidden rounded-xl shadow-md group bg-black/5">
+            <img
+              src="https://images.unsplash.com/photo-1509099863731-ef4bff19e808?auto=format&fit=crop&w=800&q=80"
+              alt="Interior del templo"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <figcaption class="px-4 py-3 bg-stone-900/80 text-stone-100 text-xs">
+              Interior del templo durante la oración silenciosa.
+            </figcaption>
+          </figure>
+
+          <!-- 2 -->
+          <figure class="overflow-hidden rounded-xl shadow-md group bg-black/5">
+            <img
+              src="https://images.unsplash.com/photo-1520174691701-bc555a3404ca?auto=format&fit=crop&w=800&q=80"
+              alt="Fieles rezando"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <figcaption class="px-4 py-3 bg-stone-900/80 text-stone-100 text-xs">
+              Comunidad reunida en la Eucaristía dominical.
+            </figcaption>
+          </figure>
+
+          <!-- 3 -->
+          <figure class="overflow-hidden rounded-xl shadow-md group bg-black/5">
+            <img
+              src="https://images.unsplash.com/photo-1527853787696-f7be74f2e39a?auto=format&fit=crop&w=800&q=80"
+              alt="Procesión parroquial"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <figcaption class="px-4 py-3 bg-stone-900/80 text-stone-100 text-xs">
+              Procesión de fe por las calles de la ciudad.
+            </figcaption>
+          </figure>
+
+          <!-- 4 -->
+          <figure class="overflow-hidden rounded-xl shadow-md group bg-black/5">
+            <img
+              src="https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=800&q=80"
+              alt="Catequesis infantil"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <figcaption class="px-4 py-3 bg-stone-900/80 text-stone-100 text-xs">
+              Niños y niñas creciendo en la fe en catequesis.
+            </figcaption>
+          </figure>
+
+          <!-- 5 -->
+          <figure class="overflow-hidden rounded-xl shadow-md group bg-black/5">
+            <img
+              src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=800&q=80"
+              alt="Coro parroquial"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <figcaption class="px-4 py-3 bg-stone-900/80 text-stone-100 text-xs">
+              Coro parroquial animando la liturgia con cantos.
+            </figcaption>
+          </figure>
+
+          <!-- 6 -->
+          <figure class="overflow-hidden rounded-xl shadow-md group bg-black/5">
+            <img
+              src="https://images.unsplash.com/photo-1520155346-36773e2584e3?auto=format&fit=crop&w=800&q=80"
+              alt="Sacramento vivido en comunidad"
+              class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <figcaption class="px-4 py-3 bg-stone-900/80 text-stone-100 text-xs">
+              Celebración de los sacramentos en comunidad.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <p class="mt-6 text-center text-xs text-gray-500">
+        Estas imágenes son referenciales. Puedes reemplazarlas por fotografías propias subiéndolas a tu servidor y
+        cambiando las URLs.
+      </p>
+    </div>
+  </section>
+
+  <!-- HISTORIA Y CARISMA FRANCISCANO -->
+  <section id="historia" class="py-16 bg-stone-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-10 items-center">
+      <div class="md:w-1/2">
+        <img
+          src="https://images.unsplash.com/photo-1543791959-0265dfdf3775?auto=format&fit=crop&w=900&q=80"
+          alt="Imagen de San Francisco de Asís"
+          class="rounded-xl shadow-lg w-full h-80 object-cover"
+        />
+      </div>
+      <div class="md:w-1/2">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">
+          Nuestra historia
+        </h2>
+        <p class="text-gray-700 mb-3 text-sm md:text-base">
+          La Parroquia San Francisco de Asís de Shushufindi ha crecido de la mano de su pueblo,
+          acompañando la vida de familias, niños, jóvenes y adultos en los diversos momentos de su
+          camino de fe.
+        </p>
+        <p class="text-gray-700 mb-4 text-sm md:text-base">
+          Bajo la protección de San Francisco, la comunidad ha buscado vivir el Evangelio con
+          sencillez y cercanía, poniendo especial atención a los más pobres y vulnerables.
+        </p>
+        <div class="bg-white p-4 border-l-4 border-franciscan rounded-r-lg shadow-sm text-sm">
+          <p class="italic text-gray-700">
+            "Comienza haciendo lo que es necesario, después lo que es posible y de repente estarás haciendo lo imposible."
+          </p>
+          <p class="text-right text-xs font-bold text-franciscan mt-2">
+            – San Francisco de Asís
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPO PASTORAL Y CARISMA -->
+  <section id="equipo-pastoral" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-10">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+            Párroco y equipo pastoral
+          </h2>
+          <p class="text-sm md:text-base text-gray-700 mb-3">
+            La parroquia está animada por su párroco, religiosos y laicos comprometidos que
+            sirven en las distintas pastorales.
+          </p>
+          <ul class="text-sm text-gray-700 space-y-2">
+            <li><strong>Párroco:</strong> Nombre del párroco (reemplazar aquí).</li>
+            <li><strong>Vicario / Colaboradores:</strong> Nombres de sacerdotes o diáconos asistentes.</li>
+            <li><strong>Consejo pastoral:</strong> Representantes de los distintos grupos y sectores.</li>
+          </ul>
+        </div>
+
+        <div id="carisma-franciscano">
+          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+            Carisma franciscano
+          </h2>
+          <p class="text-sm md:text-base text-gray-700 mb-3">
+            Inspirados en San Francisco de Asís, buscamos vivir la fraternidad, la sencillez,
+            la alegría del Evangelio y el cuidado de toda la creación.
+          </p>
+          <p class="text-sm md:text-base text-gray-700">
+            El saludo franciscano <strong>"Paz y Bien"</strong> expresa el deseo profundo de
+            llevar la paz de Cristo a cada hogar y a cada corazón.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALENDARIO (PLACEHOLDER) -->
+  <section id="calendario" class="py-16 bg-stone-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-franciscan font-bold tracking-widest uppercase text-sm">
+        Próximamente
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mt-2">
+        Calendario anual de la parroquia
+      </h2>
+      <p class="mt-3 text-sm md:text-base text-gray-700">
+        Aquí se podrá consultar, en el futuro, el calendario anual con las principales
+        celebraciones litúrgicas, retiros, convivencias y actividades pastorales.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACTO Y MAPA -->
+  <section id="contacto" class="bg-stone-900 text-stone-200 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10">
+      <div>
+        <h2 class="text-3xl font-bold text-white mb-6">Contáctanos y visítanos</h2>
+        <p class="mb-6 text-sm md:text-base">
+          Nuestras puertas están abiertas para la oración, los sacramentos y el encuentro fraterno.
+        </p>
+
+        <div class="space-y-4 text-sm md:text-base">
+          <div class="flex items-start gap-3">
+            <i class="fas fa-map-marker-alt mt-1 text-franciscan"></i>
+            <p>
+              Av. Principal y Calle Secundaria (frente al Parque Central),<br/>
+              Shushufindi, Sucumbíos, Ecuador.
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="fas fa-phone text-franciscan"></i>
+            <p>(06) 284-0111</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="fas fa-envelope text-franciscan"></i>
+            <p>secretaria@parroquiasanfrancisco.ec</p>
+          </div>
+
+          <div class="flex items-center gap-3 pt-4">
+            <a
+              href="https://www.facebook.com/profile.php?id=100070371780860"
+              target="_blank"
+              class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#1877F2] transition text-white"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a
+              href="#"
+              class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-600 transition text-white"
+            >
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Mapa (placeholder) -->
+        <div class="mt-8 h-52 bg-stone-800 rounded-lg overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.1253229087566!2d-76.648!3d-0.202!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d305f9b9f9f9f9%3A0x0!2sShushufindi!5e0!3m2!1ses!2sec!4v0000000000000"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- FORMULARIO -->
+      <div class="bg-white rounded-xl p-6 text-gray-800 shadow-lg">
+        <h3 class="text-xl font-bold mb-4">
+          Envíanos tu mensaje o intención de misa
+        </h3>
+        <form onsubmit="event.preventDefault(); alert('Gracias, su mensaje ha sido enviado.');">
+          <div class="mb-4">
+            <label class="block text-sm font-medium mb-1">Nombre</label>
+            <input
+              type="text"
+              required
+              class="w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-2 focus:ring-franciscan focus:border-franciscan outline-none"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium mb-1">Teléfono o Email</label>
+            <input
+              type="text"
+              required
+              class="w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-2 focus:ring-franciscan focus:border-franciscan outline-none"
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium mb-1">Mensaje o intención</label>
+            <textarea
+              rows="4"
+              required
+              class="w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-2 focus:ring-franciscan focus:border-franciscan outline-none"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-franciscan text-white font-bold py-2 rounded-md hover:bg-stone-800 transition text-sm"
+          >
+            Enviar mensaje
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black text-stone-400 py-6 text-center text-xs">
+    <!-- Logo footer opcional (reemplazar ./footer-logo.png) -->
+    <img
+      src="./footer-logo.png"
+      alt="Logo Parroquia San Francisco de Asís"
+      class="mx-auto h-14 w-auto mb-2 object-contain"
+    />
+    <p>
+      &copy; 2025 Parroquia Católica San Francisco de Asís - Shushufindi, Sucumbíos, Ecuador.
+    </p>
+    <p class="mt-1 text-stone-500">
+      Diseñado al servicio del Evangelio. Paz y Bien.
+    </p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // MENÚ MÓVIL
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+    }
+
+    // DROPDOWNS ESCRITORIO (click)
+    const dropdownButtons = document.querySelectorAll('[data-dropdown]');
+    dropdownButtons.forEach((button) => {
+      const menuId = button.getAttribute('data-dropdown');
+      const dropdownMenu = document.getElementById(menuId);
+
+      if (!dropdownMenu) return;
+
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = dropdownMenu.classList.contains('hidden');
+
+        document.querySelectorAll('.dropdown-menu').forEach((menu) => {
+          menu.classList.add('hidden');
         });
-    </script>
 
+        if (isHidden) {
+          dropdownMenu.classList.remove('hidden');
+        }
+      });
+    });
+
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.dropdown-menu').forEach((menu) => {
+        menu.classList.add('hidden');
+      });
+    });
+
+    /**
+     * BASE DE DATOS DEL MES
+     * Cambiar este objeto cada mes
+     */
+    const parroquiaMes = {
+      mes: "Noviembre 2025",
+      tiempoLiturgico: "Tiempo Ordinario",
+      citaBiblica: "«Den gracias al Señor porque es bueno, porque es eterna su misericordia» (Sal 107, 1).",
+      intencionMes: "Oramos de manera especial por las familias de nuestra parroquia, para que vivan unidas en la fe, la esperanza y el amor.",
+      actividades: [
+        {
+          fecha: "Todos los lunes - 19h30",
+          titulo: "Adoración al Santísimo",
+          descripcion: "Hora santa de adoración eucarística después de la misa de la tarde."
+        },
+        {
+          fecha: "Sábados - 09h00",
+          titulo: "Catequesis de Primera Comunión",
+          descripcion: "Formación para niños y niñas que se preparan para recibir la Eucaristía."
+        },
+        {
+          fecha: "Último viernes del mes - 19h00",
+          titulo: "Eucaristía por los enfermos",
+          descripcion: "Santa Misa y bendición especial para enfermos y adultos mayores."
+        }
+      ],
+      sacramentos: {
+        bautismos: "Bautismos comunitarios el primer domingo de cada mes, después de la misa de las 11h00. Inscripción en secretaría parroquial.",
+        matrimonios: "Agendar entrevista con el párroco con al menos 3 meses de anticipación. Cursos prematrimoniales según calendario parroquial.",
+        confesiones: "Media hora antes de cada misa y los viernes desde las 18h00.",
+        primerasComuniones: "Catequesis los sábados a las 09h00. Información detallada en la oficina parroquial.",
+        confirmaciones: "Catequesis juvenil los viernes a las 19h30. Grupos organizados por edades."
+      },
+      avisos: [
+        "Invitamos a traer la Biblia a las misas de los domingos para la liturgia de la Palabra.",
+        "Cáritas parroquial recibe donaciones de víveres no perecibles durante todo el mes.",
+        "Sigue nuestras redes sociales para estar al tanto de los avisos y actividades parroquiales."
+      ]
+    };
+
+    function renderMes(data) {
+      const badgeTiempo = document.getElementById('badge-tiempo-liturgico');
+      if (badgeTiempo) {
+        badgeTiempo.textContent = "Tiempo litúrgico: " + data.tiempoLiturgico;
+      }
+
+      const mesNombreEl = document.getElementById('mes-nombre');
+      if (mesNombreEl) {
+        mesNombreEl.textContent = data.mes;
+      }
+
+      const citaEl = document.getElementById('mes-cita');
+      if (citaEl) {
+        citaEl.textContent = data.citaBiblica;
+      }
+
+      const intencionEl = document.getElementById('mes-intencion');
+      if (intencionEl) {
+        intencionEl.textContent = data.intencionMes;
+      }
+
+      const actividadesEl = document.getElementById('mes-actividades');
+      if (actividadesEl) {
+        actividadesEl.innerHTML = "";
+        if (data.actividades && data.actividades.length > 0) {
+          data.actividades.forEach((act) => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+              <p class="font-semibold text-franciscan">${act.fecha}</p>
+              <p class="font-semibold">${act.titulo}</p>
+              <p class="text-gray-600">${act.descripcion}</p>
+            `;
+            actividadesEl.appendChild(li);
+          });
+        } else {
+          actividadesEl.innerHTML = "<li>No hay actividades registradas para este mes.</li>";
+        }
+      }
+
+      const sacramentosEl = document.getElementById('mes-sacramentos');
+      if (sacramentosEl) {
+        sacramentosEl.innerHTML = "";
+        const s = data.sacramentos || {};
+        const items = [
+          { nombre: "Bautismos", valor: s.bautismos },
+          { nombre: "Matrimonios", valor: s.matrimonios },
+          { nombre: "Confesiones", valor: s.confesiones },
+          { nombre: "Primeras Comuniones", valor: s.primerasComuniones },
+          { nombre: "Confirmaciones", valor: s.confirmaciones }
+        ];
+        items.forEach((item) => {
+          if (item.valor) {
+            const li = document.createElement('li');
+            li.innerHTML = `
+              <p class="font-semibold text-franciscan">${item.nombre}</p>
+              <p class="text-gray-600">${item.valor}</p>
+            `;
+            sacramentosEl.appendChild(li);
+          }
+        });
+      }
+
+      const avisosEl = document.getElementById('mes-avisos');
+      if (avisosEl) {
+        avisosEl.innerHTML = "";
+        if (data.avisos && data.avisos.length > 0) {
+          data.avisos.forEach((aviso) => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+              <p class="flex items-start gap-2">
+                <span class="mt-1 text-franciscan">
+                  <i class="fas fa-circle text-[8px]"></i>
+                </span>
+                <span>${aviso}</span>
+              </p>
+            `;
+            avisosEl.appendChild(li);
+          });
+        } else {
+          avisosEl.innerHTML = "<li>No hay avisos registrados para este mes.</li>";
+        }
+      }
+    }
+
+    renderMes(parroquiaMes);
+  </script>
 </body>
 </html>
